@@ -5,9 +5,10 @@ const {body, validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 const JWT_SECRET = 'yashwanthnaikbhukya';
+var fetchuser = require('../middleware/fetchuser');
 
 
-//create a user using POST "/api/auth/createuser" -> No Login req
+//ROUTE 1: create a user using POST "/api/auth/createuser" -> No Login req
 router.post('/createuser', [
     body('name', 'Enter a valid name').isLength({ min: 3 }),
     body('email', 'Enter a valid email').isEmail(),
@@ -46,7 +47,7 @@ router.post('/createuser', [
     }
 });
 
-//Authenticate a user using POST "/api/auth/login" -> Login
+//ROUTE 2: Authenticate a user using POST "/api/auth/login" -> Login
 router.post('/login', [
     body('email', 'Enter a valid email').isEmail(),
     body('password', 'Password cannot be empty').exists()
@@ -76,6 +77,19 @@ router.post('/login', [
         }
         const authtoken = jwt.sign(data, JWT_SECRET);
         res.json({authtoken});
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+//ROUTE 3: Get login id user details using POST "/api/auth/getuser" -> Login
+router.post('/getuser', fetchuser, async (req, res)=>{
+
+    try {
+        var userID = req.user.id;
+        const user = await User.findById(userID).select("-password");
+        res.json(user);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Server error' });
