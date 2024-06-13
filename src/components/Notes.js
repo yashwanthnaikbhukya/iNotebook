@@ -2,12 +2,20 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import noteContext from '../context/notes/NoteContext'
 import Noteitem from './Noteitem';
 import AddNote from './AddNote';
+import { useNavigate} from 'react-router-dom'
 
-const Notes = () =>{
+const Notes = (props) =>{
+    let navigate = useNavigate();
     const context = useContext(noteContext);
     const {notes, getNotes, editNote} = context;
+    
     useEffect(() => {
-        getNotes();
+        if(localStorage.getItem('token')){
+            getNotes();
+        }
+        else{
+            navigate("/login");
+        }
         // eslint-disable-next-line
     }, [])
 
@@ -23,6 +31,7 @@ const Notes = () =>{
     const handleClick = (e) =>{
         editNote(note.id, note.etitle, note.edescription, note.etag);
         refClose.current.click();
+        props.showAlert("Updated Successfully", "success")
     }
     const onChange = (e) =>{
         setNote({...note, [e.target.name]: e.target.value})
@@ -30,7 +39,7 @@ const Notes = () =>{
     
     return (
         <>
-            <AddNote />
+            <AddNote showAlert={props.showAlert} />
 
             <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Launch demo modal
@@ -40,7 +49,7 @@ const Notes = () =>{
             <div className="modal-dialog">
                 <div className="modal-content">
                 <div className="modal-header">
-                    <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <h1 className="modal-title fs-5" id="exampleModalLabel">Update Note</h1>
                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div className="modal-body">
@@ -71,7 +80,7 @@ const Notes = () =>{
             <h2>Your Notes</h2>
             {notes.length === 0 && <h3 className='text-center my-4'><i class="fa-solid fa-magnifying-glass"></i> No notes to display</h3>}
             {notes.map((note) =>{
-            return <Noteitem key={note._id} note={note} updateNote={updateNote} />
+            return <Noteitem key={note._id} note={note} updateNote={updateNote} showAlert={props.showAlert} />
             })}
         </div>
       </>
