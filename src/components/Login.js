@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { useNavigate} from 'react-router-dom'
+import { useNavigate, Link} from 'react-router-dom'
 
 const Login = (props) => {
 
@@ -33,19 +33,41 @@ const Login = (props) => {
     }
 
   return (
-    <div className='container'>
-        <form onSubmit={handleSubmit} >
-            <div className="mb-3">
-                <label htmlhtmlFor="email" className="form-label">Email address</label>
-                <input type="email" className="form-control" id="email" name="email" value={credentials.email} onChange={onChange} aria-describedby="emailHelp"/>
-                <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+    // <div className='container'>
+    //     <form onSubmit={handleSubmit} >
+    //         <div className="mb-3">
+    //             <label htmlhtmlhtmlFor="email" className="form-label">Email address</label>
+    //             <input type="email" className="form-control" id="email" name="email" value={credentials.email} onChange={onChange} aria-describedby="emailHelp"/>
+    //             <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+    //         </div>
+    //         <div className="mb-3">
+    //             <label htmlhtmlhtmlFor="password" className="form-label">Password</label>
+    //             <input type="password" className="form-control" id="password" name="password" value={credentials.password} onChange={onChange} />
+    //         </div>
+    //         <button type="submit" className="btn btn-primary" >Submit</button>
+    //     </form>
+    // </div>
+
+    // NEW----------------------------------------
+    <div className="login-card-container">
+        <div className="login-card">
+            <div className="card-left">
+                <h2 className="login-card-title">Login</h2>
+                <form onSubmit={handleSubmit} >
+                    <div className="mb-3">
+                        <label htmlFor="email" className="form-label">Email address</label>
+                        <input type="email" className="form-control" id="email" placeholder="Enter your email" name="email" value={credentials.email} onChange={onChange} aria-describedby="emailHelp" required />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="password" className="form-label">Password</label>
+                        <input type="password" className="form-control" id="password" placeholder="Enter your password" name="password" value={credentials.password} onChange={onChange} required minLength={5}  />
+                    </div>
+                    <button type="submit" className="btn btn-primary w-100">Login</button>
+                </form>
+                <Link className="signup-link" to="/signup">Don't have an account? Sign up</Link>
             </div>
-            <div className="mb-3">
-                <label htmlhtmlFor="password" className="form-label">Password</label>
-                <input type="password" className="form-control" id="password" name="password" value={credentials.password} onChange={onChange} />
-            </div>
-            <button type="submit" className="btn btn-primary" >Submit</button>
-        </form>
+            <div className="card-right"></div>
+        </div>
     </div>
   )
 }

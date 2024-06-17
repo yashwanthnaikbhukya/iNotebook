@@ -36,3 +36,258 @@
     transform: rotate(360deg);
   }
 }
+/* NEW------------------------- */
+.login-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.login-card {
+  display: flex;
+  width: 800px;
+  margin: 2rem;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.login-card .card-left {
+  flex: 1;
+  padding: 2rem;
+}
+.login-card .card-right {
+  flex: 1;
+  background: url('https://via.placeholder.com/350x450.png?text=Notes+App') center/cover no-repeat;
+}
+.login-card .btn-primary {
+  background-color: #333;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.login-card .btn-primary:hover {
+  background-color: #555;
+  transform: scale(1.05);
+}
+.login-card .form-control {
+  border-radius: 10px;
+}
+.login-card-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #555;
+}
+.signup-link {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  color: #ffc107;
+}
+.addnote {
+  background-color: #333;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.addnote:hover {
+  background-color: #555;
+  transform: scale(1.05);
+}
+
+
+
+body {
+  
+  /* Adjust the angle (135deg) and colors (#ffd700, #ffb400) as needed */
+  /* You can add more color stops or adjust the gradient to your liking */
+  align-items: center;
+  font-family: Arial, sans-serif; /* Example font */
+  color: #333; /* Example text color */
+  height: auto;
+}
+/* Hide scrollbar for Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+
+
+/* Navbar.css */
+.custom-navbar {
+  background-color: #333; /* Dark color for navbar background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure the navbar is above other content */
+  color: #fff; /* Text color for navbar */
+}
+
+.custom-navbar .navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffeb3b; /* Bright yellow color for navbar text */
+  transition: color 0.3s ease;
+}
+
+.custom-navbar .navbar-brand:hover {
+  color: #ffc107; /* Brighter yellow on hover */
+}
+
+.custom-navbar .nav-link {
+  font-size: 1.1rem;
+  color: #ffeb3b; /* Bright yellow color for nav links */
+  transition: color 0.3s ease;
+}
+
+.custom-navbar .nav-link.active {
+  color: #ffc107; /* Brighter yellow for active nav link */
+  font-weight: bold;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #ffc107; /* Brighter yellow on hover */
+  transform: scale(1.05);
+}
+
+.custom-navbar .navbar-toggler {
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.custom-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%2899, 99, 99, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  filter: invert(1); /* Invert the color of the icon */
+}
+
+.custom-navbar .btn-primary {
+  background-color: #ffeb3b; /* Bright yellow color for buttons */
+  border: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  color: #333; /* Dark color for button text */
+}
+
+.custom-navbar .btn-primary:hover {
+  background-color: #ffc107; /* Brighter yellow on hover */
+  transform: scale(1.05);
+}
+
+.custom-navbar .btn-primary.custom-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.custom-navbar .collapse.show {
+  animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+  from {
+      opacity: 0;
+      transform: translateY(-10%);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Add padding to the body to prevent content from being hidden behind the navbar */
+body {
+  padding-top: 70px; /* Adjust based on the height of the navbar */
+}
+
+
+.modal-yellow .modal-content {
+  background-color: #f9eb55; /* Bright yellow background color */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+}
+
+.scale-up {
+  animation: scale-up 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes scale-up {
+  0% {
+      transform: scale(0.5);
+      opacity: 0;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+/* ALERT */
+.alert-container {
+  position: fixed;
+  top: 10%; /* Adjust the top position as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050; /* Ensure the alert is on top of other content */
+  width: auto; /* Adjust the width if necessary */
+  max-width: 90%; /* Optional: to avoid very wide alerts on large screens */
+}
+
+.custom-alert {
+  border-radius: 8px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.btn-close {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 1.2em;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.btn-close:hover {
+  opacity: 1;
+}
+
+.custom-alert:hover {
+  transform: translateY(-5px);
+}
+
+/* NO NOTES */
+.no-notes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #555;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 50px auto;
+  max-width: 100%;
+}
+
+.no-notes-icon {
+  font-size: 50px;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+.no-notes-message {
+  font-size: 24px;
+  font-weight: 500;
+  color: #666;
+}
